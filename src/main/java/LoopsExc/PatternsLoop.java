@@ -16,30 +16,21 @@ public class PatternsLoop {
 		}
 		System.out.println("##########################3");
 	      //pattern2
-		System.out.println("Pattern 2");
-	      int size = 5,odd = 1, nos = size/2; 
-	        for (int i = 1; i <= size; i++) { 
-	            for (int k = nos; k >= 1; k--) { 
-	                                                
-	                System.out.print(" ");
-	            }
-	            for (int j = 1; j <= odd; j++) { 
-	                                               
-	                System.out.print("*");
-	            }
-	            System.out.println();
-	            if (i < size/2+1) {
-	                odd += 2;  
-	                nos -= 1;
-	            } else {
-	                odd -= 2; 
-	                nos += 1;
-
-	            }
-	        }
-	        System.out.println("##########################3");
+		
+	     
 	        
 	        //patteren 3
+//	        1010101
+//	        10101 
+//	         101  
+//	          1   
+	        for(int i= 1; i<=5; i++) {
+	        	for (int j=1; j<i; j++) {
+					System.out.print("1");
+				}
+				System.out.print("\n");
+	        }
+
 	}
 	
 	
