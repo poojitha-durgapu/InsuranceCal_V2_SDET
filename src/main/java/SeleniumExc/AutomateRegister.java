@@ -13,7 +13,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AutomateRegister {
 
-	public static void main(String[] args) {
+	@Test
+	public void RegisterConfirmCheck() {
 		WebDriverManager.chromedriver().setup();  
 		WebDriver driver = new ChromeDriver(); 
 		driver.get("http://services.smartbear.com/samples/TestComplete14/smartstore/");
@@ -27,8 +28,8 @@ public class AutomateRegister {
 		driver.findElement(By.xpath("//select[@name='DateOfBirthDay']/option[text() = '13']")).click();
 		driver.findElement(By.xpath("//select[@name='DateOfBirthMonth']/option[text() = 'August']")).click();
 		driver.findElement(By.xpath("//select[@name='DateOfBirthYear']/option[text() = '1989']")).click();
-		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("john.hauge3@gmail.com");
-		driver.findElement(By.xpath("//input[@id='Username']")).sendKeys("John1234567");
+		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("john.hauge8@gmail.com");
+		driver.findElement(By.xpath("//input[@id='Username']")).sendKeys("John888");
 		driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("john1234");
 		driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("john1234");
 		driver.findElement(By.xpath("//input[@id='Company']")).sendKeys("Company1");
