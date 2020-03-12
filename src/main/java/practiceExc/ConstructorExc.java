@@ -44,6 +44,7 @@ public class ConstructorExc {
 		ConstructorExc obj1 = new ConstructorExc("Poojitha","Hyd",89);
 				obj1.studentDetails();
 				obj1.studentResult();
+//				obj1.getClass().
 		ConstructorExc obj2 = new ConstructorExc("Nikhil","Pune",34); 
 				obj2.studentDetails();
 				obj2.studentResult();
