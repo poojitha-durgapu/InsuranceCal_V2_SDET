@@ -103,24 +103,24 @@ public class SeleniumExc2 {
         for(String str:hobbyArray) {
         	driver.findElement(By.xpath("//label[text()=' " + str+ "']")).click();
         }
-//        file uploading
-        driver.findElement(By.id("open")).click();
-        String filePath = "//Users//poojitha//Desktop//1574364225799.pdf";
-        StringSelection strSel = new StringSelection(filePath);
-//copying to clipboard
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Clipboard clipboard = toolkit.getSystemClipboard();
-		clipboard.setContents(strSel, null);
-//		for copying(command +v) and pressing eneter
-		Robot rb = new Robot();
-		rb.keyPress(KeyEvent.VK_META); //press command
-		rb.keyPress(KeyEvent.VK_V); //press l
-		Thread.sleep(1000);
-		rb.keyRelease(KeyEvent.VK_META); //release command
-		rb.keyRelease(KeyEvent.VK_V); //release l
-		rb.keyPress(KeyEvent.VK_ENTER);
-		rb.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(4000);
+////        file uploading
+//        driver.findElement(By.id("open")).click();
+//        String filePath = "//Users//poojitha//Desktop//1574364225799.pdf";
+//        StringSelection strSel = new StringSelection(filePath);
+////copying to clipboard
+//		Toolkit toolkit = Toolkit.getDefaultToolkit();
+//		Clipboard clipboard = toolkit.getSystemClipboard();
+//		clipboard.setContents(strSel, null);
+////		for copying(command +v) and pressing eneter
+//		Robot rb = new Robot();
+//		rb.keyPress(KeyEvent.VK_META); //press command
+//		rb.keyPress(KeyEvent.VK_V); //press l
+//		Thread.sleep(1000);
+//		rb.keyRelease(KeyEvent.VK_META); //release command
+//		rb.keyRelease(KeyEvent.VK_V); //release l
+//		rb.keyPress(KeyEvent.VK_ENTER);
+//		rb.keyRelease(KeyEvent.VK_ENTER);
+//		Thread.sleep(4000);
         WebElement websiteEle = driver.findElement(By.xpath(inputField("Website")));
         sendingKeys(websiteEle,"www.google.com");
 //        next
