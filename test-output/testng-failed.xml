@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="SeleniumExc.AutomateEndToEndTest">
+        <methods>
+          <include name="verifyDashboardTitle"/>
+          <include name="loginTest"/>
+          <include name="verifyTableData"/>
+          <include name="attachmentsTabDataAndSave"/>
+          <include name="logOutAppAndVerifyPageTitle"/>
+          <include name="timeTabData"/>
+          <include name="logInAgainAndClickTasks"/>
+          <include name="verifyAllOptions"/>
+          <include name="addTaskAndGeneralTab"/>
+        </methods>
+      </class> <!-- SeleniumExc.AutomateEndToEndTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
