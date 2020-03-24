@@ -1,6 +1,12 @@
 package SeleniumExc;
 
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -99,23 +105,43 @@ public class SeleniumExc2 {
         	driver.findElement(By.xpath("//label[text()=' " + str+ "']")).click();
         }
 ////        file uploading
-//        driver.findElement(By.id("open")).click();
-//        String filePath = "//Users//poojitha//Desktop//1574364225799.pdf";
-//        StringSelection strSel = new StringSelection(filePath);
+        driver.findElement(By.id("open")).click();
+        File filePath = new File("/Users/poojitha/Desktop/SASS.docx");
+//        String filePath = "/Users/poojitha/Desktop/1574364225799.pdf";
+        StringSelection strSel = new StringSelection(filePath.getAbsolutePath());
 ////copying to clipboard
-//		Toolkit toolkit = Toolkit.getDefaultToolkit();
-//		Clipboard clipboard = toolkit.getSystemClipboard();
-//		clipboard.setContents(strSel, null);
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Clipboard clipboard = toolkit.getSystemClipboard();
+		clipboard.setContents(strSel, null);
 ////		for copying(command +v) and pressing eneter
-//		Robot rb = new Robot();
-//		rb.keyPress(KeyEvent.VK_META); //press command
-//		rb.keyPress(KeyEvent.VK_V); //press l
-//		Thread.sleep(1000);
-//		rb.keyRelease(KeyEvent.VK_META); //release command
-//		rb.keyRelease(KeyEvent.VK_V); //release l
-//		rb.keyPress(KeyEvent.VK_ENTER);
-//		rb.keyRelease(KeyEvent.VK_ENTER);
-//		Thread.sleep(4000);
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_TAB);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_TAB);
+	    robot.delay(500);
+
+	    //Open Goto window
+	    robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_SHIFT);
+	    robot.keyPress(KeyEvent.VK_G);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_SHIFT);
+	    robot.keyRelease(KeyEvent.VK_G);
+
+	    //Paste the clipboard value
+	    robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_V);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_V);
+
+	    //Press Enter key to close the Goto window and Upload window
+	    robot.keyPress(KeyEvent.VK_ENTER);
+	    robot.keyRelease(KeyEvent.VK_ENTER);
+	    robot.delay(500);
+	    robot.keyPress(KeyEvent.VK_ENTER);
+	    robot.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(4000);
         WebElement websiteEle = driver.findElement(By.xpath(inputField("Website")));
         sendingKeys(websiteEle,"www.google.com");
 //        next

@@ -5,15 +5,8 @@
     <classes>
       <class name="SeleniumExc.AutomateEndToEndTest">
         <methods>
-          <include name="verifyDashboardTitle"/>
-          <include name="loginTest"/>
-          <include name="verifyTableData"/>
-          <include name="attachmentsTabDataAndSave"/>
-          <include name="logOutAppAndVerifyPageTitle"/>
-          <include name="timeTabData"/>
+          <include name="quitDriver"/>
           <include name="logInAgainAndClickTasks"/>
-          <include name="verifyAllOptions"/>
-          <include name="addTaskAndGeneralTab"/>
         </methods>
       </class> <!-- SeleniumExc.AutomateEndToEndTest -->
     </classes>

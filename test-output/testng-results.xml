@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9196" started-at="2020-03-22T18:30:12 EDT" finished-at="2020-03-22T18:30:21 EDT">
+  <suite name="Default suite" duration-ms="17066" started-at="2020-03-24T16:14:31 EDT" finished-at="2020-03-24T16:14:48 EDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9196" started-at="2020-03-22T18:30:12 EDT" finished-at="2020-03-22T18:30:21 EDT">
-      <class name="SeleniumExc.DynamicTable">
-        <test-method status="PASS" signature="dynTableTesting()[pri:0, instance:SeleniumExc.DynamicTable@1c3a4799]" name="dynTableTesting" duration-ms="6034" started-at="2020-03-22T18:30:12 EDT" finished-at="2020-03-22T18:30:18 EDT">
+    <test name="Default test" duration-ms="17066" started-at="2020-03-24T16:14:31 EDT" finished-at="2020-03-24T16:14:48 EDT">
+      <class name="SeleniumExc.AutomateEndToEndTest">
+        <test-method status="PASS" signature="driverSetup()[pri:1, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="driverSetup" duration-ms="4886" started-at="2020-03-24T16:14:31 EDT" description="navigate,login and verify the loginpageTitle" finished-at="2020-03-24T16:14:36 EDT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dynTableTesting -->
-        <test-method status="PASS" signature="quitDriver()[pri:0, instance:SeleniumExc.DynamicTable@1c3a4799]" name="quitDriver" is-config="true" duration-ms="3134" started-at="2020-03-22T18:30:18 EDT" finished-at="2020-03-22T18:30:21 EDT">
+        </test-method> <!-- driverSetup -->
+        <test-method status="PASS" signature="verifyAllOptions()[pri:2, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="verifyAllOptions" duration-ms="125" started-at="2020-03-24T16:14:36 EDT" description="verifying all options" finished-at="2020-03-24T16:14:36 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAllOptions -->
+        <test-method status="PASS" signature="addTaskAndGeneralTab()[pri:3, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="addTaskAndGeneralTab" duration-ms="1605" started-at="2020-03-24T16:14:36 EDT" description="Add task button,Selecting Test Project1 and entering data under GeneralTab" finished-at="2020-03-24T16:14:38 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskAndGeneralTab -->
+        <test-method status="PASS" signature="timeTabData()[pri:4, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="timeTabData" duration-ms="3843" started-at="2020-03-24T16:14:38 EDT" description="Time tab/Attachments tab and entering Data,LogOut and verify Title" depends-on-methods="SeleniumExc.AutomateEndToEndTest.addTaskAndGeneralTab" finished-at="2020-03-24T16:14:41 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- timeTabData -->
+        <test-method status="PASS" signature="logInAgainAndClickTasks()[pri:5, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="logInAgainAndClickTasks" duration-ms="1986" started-at="2020-03-24T16:14:41 EDT" description="loggin Again and click all Tasks" finished-at="2020-03-24T16:14:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logInAgainAndClickTasks -->
+        <test-method status="PASS" signature="searchInput()[pri:6, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="searchInput" duration-ms="3438" started-at="2020-03-24T16:14:43 EDT" description="search input,verify the data inserted correctly,delete and again verify deleted or not" finished-at="2020-03-24T16:14:47 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchInput -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:SeleniumExc.AutomateEndToEndTest@1e6d1014]" name="quitDriver" is-config="true" duration-ms="1143" started-at="2020-03-24T16:14:47 EDT" finished-at="2020-03-24T16:14:48 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitDriver -->
-      </class> <!-- SeleniumExc.DynamicTable -->
+      </class> <!-- SeleniumExc.AutomateEndToEndTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
