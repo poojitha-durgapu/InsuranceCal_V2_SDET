@@ -8,8 +8,12 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -193,13 +197,13 @@ public class AutomateEndToEndTest {
 	public void searchInput() {
 		searchingInput();
 		List<WebElement> tdataList = driver
-				.findElements(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr[1]/td"));
+				.findElements(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr/td"));
 		for (WebElement ele : tdataList) {
 			String value = ele.getText();
 			Assert.assertTrue(true, value);
 		}
 		// delete
-		driver.findElement(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr[1]/td[2]/a[1]")).click();
+		driver.findElement(By.xpath("//div[@role='grid']//tbody[@role='alert']//i[@class='fa fa-trash-o']/parent::a")).click();
 		// switchToAlertBox
 		Alert al = driver.switchTo().alert();
 		String alText = al.getText();
