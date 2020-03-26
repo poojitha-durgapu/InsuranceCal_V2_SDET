@@ -8,12 +8,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,6 +32,8 @@ public class AutomateEndToEndTest {
 	String assignedToStr = "developer;manager";
 	String createdBy = "manager";
 	String statusValue = "Lost";
+	String[] titlesArr = { "Dashboard", "Projects", "Tasks", "Tickets", "Discussions", "Reports", "Users",
+			"Configuration", "Tools", "qdPM Extended" };
 
 	public void sendingKeys(WebElement ele, String value) {
 		ele.sendKeys(value);
@@ -76,33 +75,26 @@ public class AutomateEndToEndTest {
 		comparingThroughSoftAssert(loginPageTitle, expLoginPageTitle);
 	}
 
-	// Step 1,2,3
-	@Test(description = "navigate,login and verify the loginpageTitle", priority = 1)
-	public void driverSetup() {
+	@Test(description = "automating end to end ")
+	public void driverSetup() throws Exception {
 		WebDriverManager.chromedriver().version("80.0.3987.106").setup();
 		driver = new ChromeDriver();
 		driver.get("http://qdpm.net/demo/v9/index.php");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginTest();
-	}
-
-	// Step 4
-	@Test(description = "verifying all options", priority = 2)
-	public void verifyAllOptions() {
 		String dashboardPageTitle = driver.getTitle();
 		comparingThroughSoftAssert(dashboardPageTitle, expdashboardPageTitle);
 		List<WebElement> listOfSidebarLinks = driver
 				.findElements(By.xpath("//ul[@class='page-sidebar-menu']/li/a/span[@class='title']"));
 		for (WebElement ele : listOfSidebarLinks) {
 			String titleName = ele.getText();
-			Assert.assertTrue(true, titleName);
+			for (String str : titlesArr) {
+				Assert.assertEquals(str, titleName);
+				titlesArr = ArrayUtils.remove(titlesArr, 0);
+				break;
+			}
 		}
-	}
-
-	// Step 5,6,7
-	@Test(description = "Add task button,Selecting Test Project1 and entering data under GeneralTab", priority = 3)
-	public void addTaskAndGeneralTab() {
 		driver.findElement(By.xpath("//button[text()='Add Task']")).click();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ajax-modal")));
@@ -132,11 +124,6 @@ public class AutomateEndToEndTest {
 		driver.findElement(By.xpath(
 				"//select[@id='tasks_created_by']/optgroup[@label='Manager']/option[text()='" + createdBy + "']"))
 				.click();
-	}
-
-	// Step 8,9,10,11
-	@Test(description = "Time tab/Attachments tab and entering Data,LogOut and verify Title", dependsOnMethods = "addTaskAndGeneralTab", priority = 4)
-	public void timeTabData() throws Exception {
 		driver.findElement(By.xpath("//a[text()='Time']")).click();
 		WebElement estimatedTimeField = driver
 				.findElement(By.xpath("//label[text()='Estimated Time']/parent::label/following-sibling::div/input"));
@@ -179,31 +166,43 @@ public class AutomateEndToEndTest {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		driver.findElement(By.xpath("//button[text()='Save']")).click();
 		logOutAppAndVerifyPageTitle();
-	}
-
-//	Step 12,13
-	@Test(description = "loggin Again and click all Tasks", priority = 5)
-	public void logInAgainAndClickTasks() {
 		loginTest();
 		driver.findElement(By.xpath(
 				"//ul[@class='page-sidebar-menu']//i[@class='fa fa-tasks']/following-sibling::span[text()='Tasks']"))
 				.click();
 		driver.findElement(By.xpath("//ul[@class='sub-menu']//a[@href='/demo/v9/index.php/tasks']/child::span"))
 				.click();
-	}
-
-	// Step 14.15,16,17,18,19,20
-	@Test(description = "search input,verify the data inserted correctly,delete and again verify deleted or not", priority = 6)
-	public void searchInput() {
 		searchingInput();
-		List<WebElement> tdataList = driver
-				.findElements(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr/td"));
+		List<WebElement> tdataList = driver.findElements(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr/td"));
+//		String[] tableDArr = {"","","22","Issue","Poojitha","Lost","developer manager","11","31 Dec 2019","Test Project 1"};
+//		for (WebElement ele : tdataList) {
+//			String value = ele.getText();
+//			for(String str :tableDArr) {
+//			Assert.assertTrue(str, value);
+//			tableDArr = ArrayUtils.remove(tableDArr, 0);
+//			break;
+//			}
 		for (WebElement ele : tdataList) {
 			String value = ele.getText();
 			Assert.assertTrue(true, value);
 		}
+
+//		int noOfCloumns = driver.findElements(By.xpath("//div[@role='grid']//tbody[@role='alert']/tr/td")).size();
+//		String part1 = "//div[@role='grid']//tbody[@role='alert']//td[";
+//		String part3 = "]";
+//		String[] tableDArr = {"Issue","Poojitha","Lost","developer","manager","11","31 Dec 2019","Test Project 1"};
+//		String[] tabValArr = {};
+//		for(int i=4;i<=noOfCloumns;i++) {
+//			String finalPath = part1+i+part3;
+//			String value = driver.findElement(By.xpath(finalPath)).getText();
+//			System.out.println(value);
+//			tabValArr = ArrayUtils.add(tabValArr, value);
+//		}
+//		System.out.println(Arrays.toString(tabValArr));
+//		Assert.assertTrue(Arrays.equals(tableDArr, tabValArr));
 		// delete
-		driver.findElement(By.xpath("//div[@role='grid']//tbody[@role='alert']//i[@class='fa fa-trash-o']/parent::a")).click();
+		driver.findElement(By.xpath("//div[@role='grid']//tbody[@role='alert']//i[@class='fa fa-trash-o']/parent::a"))
+				.click();
 		// switchToAlertBox
 		Alert al = driver.switchTo().alert();
 		String alText = al.getText();
